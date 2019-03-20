@@ -8,12 +8,12 @@ The configuration in this repository was run using `Terraform v0.11.13`.
 
 The configuration in this repository will create the following:
 
-* An EC2 instance in us-east-1
-* A security group for the EC2 instance
-* An AWS Launch Configuration
-* An Auto Scaling group
-* An ELB
-* A security group for the ELB
+* EC2 instance in us-east-1
+* Security group for the EC2 instance
+* AWS Launch Configuration
+* Auto Scaling group
+* ELB with the existing instance attached
+* Security group for the ELB
 
 The state is stored in an S3 bucket.
 
