@@ -1,4 +1,4 @@
-output "instance_ids" {
+output "instance_ips" {
   value = ["${aws_instance.demo.*.public_ip}"]
 }
 
