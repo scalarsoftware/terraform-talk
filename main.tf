@@ -2,7 +2,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-talk-bucket"
-    key    = "state"
+    key    = "terraform-talk.tfstate"
     region = "us-east-1"
   }
 }
