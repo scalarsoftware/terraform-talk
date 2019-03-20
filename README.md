@@ -15,6 +15,8 @@ The configuration in this repository will create the following:
 * An ELB
 * A security group for the ELB
 
+The state is stored in an S3 bucket.
+
 ## Usage
 
 Initialize the Terraform:
@@ -33,6 +35,12 @@ Launch the resources:
 
 ```
 terraform apply
+```
+
+## Questions?
+
+```
+contact@scalarsoftware.com
 ```
 
 ## Contributors
