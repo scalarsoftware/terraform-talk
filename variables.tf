@@ -1,21 +1,24 @@
-variable “count” {
- default = 1
- }
-variable “region” {
- description = “AWS region for hosting our your network”
- default = “ap-south-1”
+variable "count" {
+  default = 1
 }
-variable “public_key_path” {
- description = “Enter the path to the SSH Public Key to add to AWS.”
- default = “/path_to_keyfile/keypair_name.pem”
+
+variable "region" {
+  description = "AWS region to host your infrastructure"
+  default = "us-east-1"
 }
-variable “key_name” {
- description = “Key name for SSHing into EC2”
- default = “kaypair_name”
+
+variable "key_name" {
+  description = "Private key name to use with instance"
+  default = "terraform"
 }
-variable “amis” {
- description = “Base AMI to launch the instances”
- default = {
- ap-south-1 = “ami-8da8d2e2”
- }
+
+variable "instance_type" {
+  description = "AWS instance type"
+  default = "t3.small"
+}
+
+variable "ami" {
+  description = "Base AMI to launch the instances"
+  # Bitnami NGINX AMI
+  default = "ami-021acbdb89706aa89"
 }
