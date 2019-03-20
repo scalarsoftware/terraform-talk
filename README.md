@@ -18,4 +18,4 @@ terraform apply
 
 ## Contributors
 
-* @alexandarp
+* [Alex Podobnik](https://github.com/alexandarp)
