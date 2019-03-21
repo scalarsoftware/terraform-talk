@@ -10,10 +10,8 @@ terraform {
 # Use AWS Terraform provider
 provider "aws" {
   # TODO change to a variable in CI
-  #shared_credentials_file = "/home/alexandar/.aws/credentials"
-  access_key = "${var.aws_access_key}"
-  secret_key = "${var.aws_secret_key}"
-  region = "us-east-1"
+  # shared_credentials_file = "/home/alexandar/.aws/credentials"
+  # region = "us-east-1"
 }
 
 data "aws_availability_zones" "all" {}
