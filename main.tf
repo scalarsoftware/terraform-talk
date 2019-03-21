@@ -95,7 +95,6 @@ resource "aws_elb" "demo" {
   name = "terraform-demo-elb"
   security_groups = ["${aws_security_group.elb.id}"]
   availability_zones = ["${data.aws_availability_zones.all.names}"]
-  instances = ["${aws_instance.demo.*.id}"]
   health_check {
     healthy_threshold = 2
     unhealthy_threshold = 2
@@ -109,4 +108,11 @@ resource "aws_elb" "demo" {
     instance_port = "80"
     instance_protocol = "http"
   }
+}
+
+# Create a new load balancer attachment
+resource "aws_elb_attachment" "demo" {
+  count    = "${var.count}"
+  elb      = "${aws_elb.demo.id}"
+  instance = "${element(aws_instance.demo.*.id, count.index)}"
 }
