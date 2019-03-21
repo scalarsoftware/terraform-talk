@@ -11,6 +11,8 @@ terraform {
 provider "aws" {
   # TODO change to a variable in CI
   #shared_credentials_file = "/home/alexandar/.aws/credentials"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
   region = "us-east-1"
 }
 
