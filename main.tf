@@ -10,7 +10,7 @@ terraform {
 # Use AWS Terraform provider
 provider "aws" {
   # TODO change to a variable in CI
-  shared_credentials_file = "/home/alexandar/.aws/credentials"
+  #shared_credentials_file = "/home/alexandar/.aws/credentials"
   region = "us-east-1"
 }
 
