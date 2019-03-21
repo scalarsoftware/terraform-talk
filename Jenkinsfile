@@ -1,4 +1,8 @@
-String terraformCredentialsId = ''
+environment {
+  AWS_ID = credentials("AWS_ID")
+  AWS_ACCESS_KEY_ID = "${env.AWS_ID_USR}"
+  AWS_SECRET_ACCESS_KEY = "${env.AWS_ID_PSW}"
+}
 
 try {
   stage('checkout') {
@@ -10,20 +14,16 @@ try {
 
   stage('init') {
     node {
-      withCredentials([file(credentialsId: terraformCredentialsId, variable: '')]) {
-        ansiColor('xterm') {
-          sh 'terraform init'
-        }
+      ansiColor('xterm') {
+        sh 'terraform init'
       }
     }
   }
 
   stage('plan') {
     node {
-      withCredentials([file(credentialsId: terraformCredentialsId, variable: '')]) {
-        ansiColor('xterm') {
-          sh 'terraform plan'
-        }
+      ansiColor('xterm') {
+        sh 'terraform plan'
       }
     }
   }
@@ -32,10 +32,8 @@ try {
 
     stage('apply') {
       node {
-        withCredentials([file(credentialsId: terraformCredentialsId, variable: '')]) {
-          ansiColor('xterm') {
-            sh 'terraform apply -auto-approve'
-          }
+        ansiColor('xterm') {
+          sh 'terraform apply -auto-approve'
         }
       }
     }
@@ -43,10 +41,8 @@ try {
     
     stage('show') {
       node {
-        withCredentials([file(credentialsId: terraformCredentialsId, variable: '')]) {
-          ansiColor('xterm') {
-            sh 'terraform show'
-          }
+        ansiColor('xterm') {
+          sh 'terraform show'
         }
       }
     }
@@ -65,4 +61,3 @@ finally {
     currentBuild.result = 'SUCCESS'
   }
 }
-
