@@ -1,3 +1,4 @@
+// Jenkinsfile
 String credentialsId = 'awsCredentials'
 
 try {
@@ -8,6 +9,7 @@ try {
     }
   }
 
+  // Run terraform init
   stage('init') {
     node {
       withCredentials([[
@@ -23,6 +25,7 @@ try {
     }
   }
 
+  // Run terraform plan
   stage('plan') {
     node {
       withCredentials([[
@@ -40,6 +43,7 @@ try {
 
   if (env.BRANCH_NAME == 'master') {
 
+    // Run terraform apply
     stage('apply') {
       node {
         withCredentials([[
@@ -55,6 +59,7 @@ try {
       }
     }
 
+    // Run terraform show
     stage('show') {
       node {
         withCredentials([[

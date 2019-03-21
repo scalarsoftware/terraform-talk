@@ -37,6 +37,12 @@ Launch the resources:
 terraform apply
 ```
 
+Show resource details:
+
+```
+terraform show
+```
+
 ## Questions?
 
 ```
