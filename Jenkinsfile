@@ -25,8 +25,15 @@ try {
 
   stage('plan') {
     node {
-      ansiColor('xterm') {
-        sh 'terraform plan'
+      withCredentials([[
+        $class: 'AmazonWebServicesCredentialsBinding',
+        credentialsId: credentialsId,
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+      ]]) {
+        ansiColor('xterm') {
+          sh 'terraform plan'
+        }
       }
     }
   }
@@ -35,17 +42,30 @@ try {
 
     stage('apply') {
       node {
-        ansiColor('xterm') {
-          sh 'terraform apply -auto-approve'
+        withCredentials([[
+          $class: 'AmazonWebServicesCredentialsBinding',
+          credentialsId: credentialsId,
+          accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]]) {
+          ansiColor('xterm') {
+            sh 'terraform apply -auto-approve'
+          }
         }
       }
     }
 
-    
     stage('show') {
       node {
-        ansiColor('xterm') {
-          sh 'terraform show'
+        withCredentials([[
+          $class: 'AmazonWebServicesCredentialsBinding',
+          credentialsId: credentialsId,
+          accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]]) {
+          ansiColor('xterm') {
+            sh 'terraform show'
+          }
         }
       }
     }
