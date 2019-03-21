@@ -11,7 +11,7 @@ terraform {
 provider "aws" {
   # TODO change to a variable in CI
   # shared_credentials_file = "/home/alexandar/.aws/credentials"
-  # region = "us-east-1"
+  region = "us-east-1"
 }
 
 data "aws_availability_zones" "all" {}
